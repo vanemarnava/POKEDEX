@@ -12,28 +12,39 @@
 const containPokes = document.getElementById('pokemons');
 const pokeCall = document.getElementById('pokeCall');
 const form = document.getElementById('search-form');
-let pokeName;
+let pokeNameSearched;
 
 preloadPokes();
 
 form.addEventListener('submit', function(e) {
 	e.preventDefault();
 	// responseContainer.innerHTML = '';
-	pokeName = pokeCall.value;
-	getNews();
+	pokeNameSearched = pokeCall.value;
+	getPoke();
 })
 
 function preloadPokes() {
 		const articleRequest = new XMLHttpRequest();
 		articleRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/`);
-		articleRequest.onload = addPoke;
+		articleRequest.onload = firstAddPoke;
 		articleRequest.onerror = handleError;
 		articleRequest.send();
 }
 
-function getNews() {
+function firstAddPoke() {
+	const data = JSON.parse(this.responseText);
+	const response = data.results;
+	for(let i in response) { 
+		const pokeName = data.results[i].name;
+		pokeNameSearched = pokeName;
+		getPoke()
+	};
+	
+}
+
+function getPoke() {
 	const articleRequest = new XMLHttpRequest();
-	articleRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/${pokeName}`);
+	articleRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/${pokeNameSearched}`);
 	articleRequest.onload = addPoke;
 	articleRequest.onerror = handleError;
 	articleRequest.send();
@@ -47,12 +58,11 @@ function addPoke() {
 	const data = JSON.parse(this.responseText);
 	const response = data.results;
 	for(let i in response) { 
-		console.log(data.results[i].name)
-		// const pokeName = data.results[i];
+		const pokeName2 = data.results[i].name;
+		console.log(pokeName2);
 		// let content = document.createElement('div');
 		// content.appendChild = pokeName;
 		// containPokes.appendChild(content);
 	};
-	
 	
 }
