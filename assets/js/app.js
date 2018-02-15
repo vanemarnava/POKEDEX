@@ -15,6 +15,7 @@ form.addEventListener('submit', function (e) {
 	getPokemon();
 })
 
+<<<<<<< HEAD
 //creando objeto XHR
 //creando funcion getPokemon() donde se crearan las peticiones
 function getPokemon(){
@@ -37,11 +38,22 @@ function addPoke(){
 	const pokeImg = data.sprites.front_default;
 	const node = `<h1 id=pokename>"${pokemonName}"</h1><img src="${pokeImg}" alt="">`;
   form.innerHTML = node;
-
 }
 
 
 // funcion que muestra el mensaje de error 
 function handleError () {
   console.log( 'An error occurred 😞' );
+}
+
+function addPoke() {
+	const data = JSON.parse(this.responseText);
+	const response = data.results;
+	for(let i in response) { 
+		console.log(data.results[i].name)
+		// const pokeName = data.results[i];
+		// let content = document.createElement('div');
+		// content.appendChild = pokeName;
+		// containPokes.appendChild(content);
+	};
 }
