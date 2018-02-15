@@ -42,10 +42,6 @@ function addPoke(){
 
 
 // funcion que muestra el mensaje de error 
-function handleError() {
-  console.log('se ha presentado un error');
+function handleError () {
+  console.log( 'An error occurred 😞' );
 }
-
-
-
-
