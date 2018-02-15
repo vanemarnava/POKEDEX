@@ -39,7 +39,6 @@ function addPoke(){
   form.innerHTML = node;
 }
 
-
 // funcion que muestra el mensaje de error 
 function handleError () {
   console.log( 'An error occurred 😞' );
