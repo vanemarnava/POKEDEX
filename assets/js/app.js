@@ -32,6 +32,14 @@ function getPokemon(){
 function addPoke(){
 	// convertir la respuesta que esta en json en una respuesta javascript
 	const data = JSON.parse(this.responseText);
+	const responseImg = data.sprites.front_default;
+	const responseName = data.name;
+	const poke = `<img src="${responseImg}" alt=""><p>${responseNam}</p>`;
+	// const divs = document.createElement('div');
+	// divs.appendChild(node);
+	containPokes.innerHTML = poke;
+
+}
 
 // funcion que muestra el mensaje de error 
 function handleError () {
