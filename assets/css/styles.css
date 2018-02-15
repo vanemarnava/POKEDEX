@@ -1,0 +1,25 @@
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body{
+	background-color: #f7352e /*f7ec71*/;
+}
+
+.pokeLogo{
+	height: 20%;
+	width: 30%;
+	margin: 2em 0 2em 0;
+}
+
+.visuallyhidden{
+	margin: 1em 0 2em 0;
+}
+
+.contenedorPokemon{
+	height: 10em;
+}

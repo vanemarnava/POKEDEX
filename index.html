@@ -2,14 +2,18 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Pokedex</title>
 	<!-- favicon pokeball -->
 	<link rel="shortcut icon" type="image/x-icon" href='assets/img/favicon/1515888893 (1).ico'>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<!-- estilos css -->
 	<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+<<<<<<< HEAD
 	<section>
 		<form id="search-form">
 			<input type="text" id="pokeCall" name="search-keyword" placeholder="e.g. Pokemon u love" required>
@@ -18,5 +22,53 @@
 		<div class="" id="pokemons"></div>
 	</section>
 	<script src="assets/js/app.js"></script>
+=======
+	<!-- inicio contenedor con busqueda del pokemon -->
+	<section>
+		<div class="container-fluid pokemon-one">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h2>POKEDEX</h2>
+					<img class="pokeLogo" src="assets/img/International_Pokémon_logo.svg.png" alt="logo-pokemon">
+
+					<form action='' id="pokeform">
+						<label for="search-keyword" class="visuallyhidden">Introduce el nombre del Pokemon que quieres buscar</label>
+						<br>
+						<input type="text" id='pokeName' placeholder="Number of the pokemon" name="" required>
+						<!-- <input id="search-keyword" type="text" name="search-keyword" placeholder="e.g. Android" required> -->
+						<!-- <br> -->
+						<!-- <button type=submit >GO!</button> -->
+						<input id="submit-btn" type="submit" value="GO!">
+					
+						<!-- <label for="search-keyword" class="visuallyhidden">Introduce el nombre del Pokemon que quieres buscar</label> -->
+					</form>
+		
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- contenedor que muestra el resultado de la busqueda -->
+	<section>
+		<div class="container-fluid poke-container">		
+			<div class="row">
+				<div class="col-md-12">
+					<!-- aqui deberia ir la info del pokemon -->
+					<div class="contenedorPokemon">
+					<!-- <h1 id=pokename></h1> -->
+					<!-- <img id="pokeimage"/> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- scripts -->
+	<!-- enlace jquery -->
+	<script src="assets/js/jquery-3.2.1.min.js"></script>
+	<!-- bootstrap -->
+	<script src="assets/js/bootstrap.min.js" ></script>
+	<!-- enlace app.js -->
+	<script src="assets/js/app.js" ></script>
+>>>>>>> actualizando pokedex
 </body>
 </html>

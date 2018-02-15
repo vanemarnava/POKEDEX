@@ -1,107 +1,47 @@
-// var pokemons = document.getElementById('pokemons');
+//traer los elementos del html que se usaran
+//traer formulario
+const form = document.getElementById('pokeform');//form
+//input ingreso nombre pokemon
+const searchPoke = document.getElementById('pokeName');// label - input
+//contenedor donde ira el resultado
+const contenedorPokemon = document.getElementById('contenedorPokemon');
+let searchedForPokemon;
 
-// fetch('https://pokeapi.co/api/v2/pokemon/1/')
-// .then(function(response) {
-//   console.log(response.blob());
-// })
-// // .then(function(myBlob) {
-// //   var objectURL = URL.createObjectURL(myBlob);
-// //   pokemons.append(objectURL);
-// // });
-
-const containPokes = document.getElementById('pokemons');
-const pokeCall = document.getElementById('pokeCall');
-const form = document.getElementById('search-form');
-let pokeNameSearched;
-
-form.addEventListener('submit', function(e) {
-	e.preventDefault();
-	// responseContainer.innerHTML = '';
-	pokeNameSearched = pokeCall.value;
-	getPoke();
+//Evento submit del formulario e instrucciones a ejecutar 
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+	//contenedorPokemon.innerHTML = '';
+	searchedForPokemon = searchPoke.value;
+	getPokemon();
 })
 
-function getPoke() {
-	const articleRequest = new XMLHttpRequest();
-	articleRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/${pokeNameSearched}`);
-	articleRequest.onload = addPoke;
-	articleRequest.onerror = handleError;
-	articleRequest.send();
+//creando objeto XHR
+//creando funcion getPokemon() donde se crearan las peticiones
+function getPokemon(){
+	//creando objeto con el new
+	const pokeRequest = new XMLHttpRequest();
+	//abriendo coneccion con el open
+	//pokeRequest.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/1/');
+	pokeRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/${searchedForPokemon}`);
+	pokeRequest.onload = addPoke;
+	pokeRequest.onerror = handleError;
+	//enviando la peticion
+	pokeRequest.send();
 }
 
-function handleError () {
-  console.log( 'An error occurred 😞' );
-}
-
-function addPoke() {
+function addPoke(){
+	// convertir la respuesta que esta en json en una respuesta javascript
 	const data = JSON.parse(this.responseText);
-	const responseImg = data.sprites.front_default;
-	const responseName = data.name;
-	const poke = `<img src="${responseImg}" alt=""><p>${responseName}</p>`;
-	// const divs = document.createElement('div');
-	// divs.appendChild(node);
-	containPokes.innerHTML = poke;
+	// console.log(data);
+	const pokemonName = data.name;
+	const pokeImg = data.sprites.front_default;
+	const node = `<h1 id=pokename>"${pokemonName}"</h1><img src="${pokeImg}" alt="">`;
+  form.innerHTML = node;
 
 }
 
-// var pokemons = document.getElementById('pokemons');
+// funcion que muestra el mensaje de error 
+function handleError() {
+  console.log('se ha presentado un error 😞');
+}
 
-// fetch('https://pokeapi.co/api/v2/pokemon/1/')
-// .then(function(response) {
-//   console.log(response.blob());
-// })
-// // .then(function(myBlob) {
-// //   var objectURL = URL.createObjectURL(myBlob);
-// //   pokemons.append(objectURL);
-// // });
-
-// const containPokes = document.getElementById('pokemons');
-// const pokeCall = document.getElementById('pokeCall');
-// let pokeNameSearched;
-
-// pokeCall.addEventListener('keydown', function(e) {
-// 	e.preventDefault();
-// 	// responseContainer.innerHTML = '';
-// 	pokeNameSearched = pokeCall.value;
-// 	getNamePoke();
-// })
-
-// function getNamePoke() {
-// 	const articleRequest = new XMLHttpRequest();
-// 	articleRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/?limit=800`);
-// 	articleRequest.onload = addNamePoke;
-// 	articleRequest.onerror = handleError;
-// 	articleRequest.send();
-// }
-
-// function addNamePoke() {
-// 	const data = JSON.parse(this.responseText);
-	
-// 	for (let i in data)
-// 	const responseImg = data.sprites.front_default;
-// 	const responseName = data.name;
-// 	const poke = `<img src="${responseImg}" alt=""><p>${responseName}</p>`;
-// 	containPokes.innerHTML = poke;
-	
-// }
-
-// function getPoke() {
-// 	const articleRequest = new XMLHttpRequest();
-// 	articleRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/${pokeNameSearched}`);
-// 	articleRequest.onload = addPoke;
-// 	articleRequest.onerror = handleError;
-// 	articleRequest.send();
-// }
-
-// function handleError () {
-//   console.log( 'An error occurred 😞' );
-// }
-
-// function addPoke() {
-// 	const data = JSON.parse(this.responseText);
-// 	const responseImg = data.sprites.front_default;
-// 	const responseName = data.name;
-// 	const poke = `<img src="${responseImg}" alt=""><p>${responseName}</p>`;
-// 	containPokes.innerHTML = poke;
-	
-// }
