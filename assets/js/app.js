@@ -14,33 +14,12 @@ const pokeCall = document.getElementById('pokeCall');
 const form = document.getElementById('search-form');
 let pokeNameSearched;
 
-preloadPokes();
-
 form.addEventListener('submit', function(e) {
 	e.preventDefault();
 	// responseContainer.innerHTML = '';
 	pokeNameSearched = pokeCall.value;
 	getPoke();
 })
-
-function preloadPokes() {
-		const articleRequest = new XMLHttpRequest();
-		articleRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/`);
-		articleRequest.onload = firstAddPoke;
-		articleRequest.onerror = handleError;
-		articleRequest.send();
-}
-
-function firstAddPoke() {
-	const data = JSON.parse(this.responseText);
-	const response = data.results;
-	for(let i in response) { 
-		const pokeName = data.results[i].name;
-		pokeNameSearched = pokeName;
-		getPoke()
-	};
-	
-}
 
 function getPoke() {
 	const articleRequest = new XMLHttpRequest();
@@ -56,13 +35,16 @@ function handleError () {
 
 function addPoke() {
 	const data = JSON.parse(this.responseText);
-	const response = data.results;
-	for(let i in response) { 
-		const pokeName2 = data.results[i].name;
-		console.log(pokeName2);
-		// let content = document.createElement('div');
+	const responseImg = data.sprites.back_default;
+	const node = `<img src="${responseImg}" alt="">`;
+	// const divs = document.createElement('div');
+	// divs.appendChild(node);
+	containPokes.innerHTML = node;
+
+	// console.log(node);
+		
 		// content.appendChild = pokeName;
 		// containPokes.appendChild(content);
-	};
+	
 	
 }
