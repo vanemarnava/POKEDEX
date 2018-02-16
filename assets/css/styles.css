@@ -47,6 +47,10 @@ input {
 	width: 12em;
 }
 
+.modal img {
+	width: 18em;
+}
+
 .pokedex {
 	background-color: red;
 }
