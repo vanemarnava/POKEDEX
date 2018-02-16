@@ -12,17 +12,41 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
 	//contenedorPokemon.innerHTML = '';
 	searchedForPokemon = searchPoke.value;
-	getPokemon();
+	getPokemon(searchedForPokemon);
 })
 
-//creando objeto XHR
-//creando funcion getPokemon() donde se crearan las peticiones
-function getPokemon(){
+getAllPokemon();
+
+function getAllPokemon(){
 	//creando objeto con el new
 	const pokeRequest = new XMLHttpRequest();
 	//abriendo coneccion con el open
 	//pokeRequest.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/1/');
-	pokeRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/${searchedForPokemon}`);
+	pokeRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/`);
+	pokeRequest.onload = arrayPoke;
+	pokeRequest.onerror = handleError;
+	//enviando la peticion
+	pokeRequest.send();
+}
+
+function arrayPoke() {
+	const data = JSON.parse(this.responseText);
+	const response = data.results;
+	for(let i in response) { 
+		const pokeName = data.results[i].name;
+		getPokemon(pokeName);
+	};
+	
+}
+
+//creando objeto XHR
+//creando funcion getPokemon() donde se crearan las peticiones
+function getPokemon(name){
+	//creando objeto con el new
+	const pokeRequest = new XMLHttpRequest();
+	//abriendo coneccion con el open
+	//pokeRequest.open('GET', 'https://pokeapi.co/api/v2/pokemon-species/1/');
+	pokeRequest.open('GET', `https://pokeapi.co/api/v2/pokemon/${name}`);
 	pokeRequest.onload = addPoke;
 	pokeRequest.onerror = handleError;
 	//enviando la peticion
@@ -34,10 +58,8 @@ function addPoke(){
 	const data = JSON.parse(this.responseText);
 	const responseImg = data.sprites.front_default;
 	const responseName = data.name;
-	const poke = `<div class="col-xs-6 col-md-4 col-md-3 text-center cardPoke" data-toggle="modal" data-target="#myModal"><div class="pokemon"><img src="${responseImg}" alt=""></div><div class="namePoke">${responseName}</div></div>`;
-	contenedorPokemon.innerHTML = poke;
-
-
+	const poke = `<div class="col-xs-6 col-sm-4 col-md-3 text-center cardPoke" data-toggle="modal" data-target="#myModal"><div class="pokemon"><img src="${responseImg}" alt=""></div><div class="namePoke">${responseName}</div></div>`;
+	$(contenedorPokemon).append(poke);
 }
 
 // funcion que muestra el mensaje de error 
