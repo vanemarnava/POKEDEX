@@ -24,11 +24,6 @@ body{
 	margin: 40px 0;
 }
 
-.master {
-	display: flex;
-	justify-content: center;
-}
-
 input {
 	min-width: 200px;
 	padding: 5px;
