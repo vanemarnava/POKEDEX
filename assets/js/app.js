@@ -34,10 +34,9 @@ function addPoke(){
 	const data = JSON.parse(this.responseText);
 	const responseImg = data.sprites.front_default;
 	const responseName = data.name;
-	const poke = `<img src="${responseImg}" alt=""><p>${responseNam}</p>`;
-	// const divs = document.createElement('div');
-	// divs.appendChild(node);
-	containPokes.innerHTML = poke;
+	const poke = `<div class="col-xs-6 col-md-4 col-md-3 text-center cardPoke" data-toggle="modal" data-target="#myModal"><div class="pokemon"><img src="${responseImg}" alt=""></div><div class="namePoke">${responseName}</div></div>`;
+	contenedorPokemon.innerHTML = poke;
+
 
 }
 
@@ -45,3 +44,9 @@ function addPoke(){
 function handleError () {
   console.log( 'An error occurred 😞' );
 }
+
+// console.log()
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})

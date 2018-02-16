@@ -13,6 +13,29 @@
 	<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+	<!-- Button trigger modal -->
+	<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	  Launch demo modal
+	</button> -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      </div>
+	      <div class="modal-body">
+	        ...
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<!-- inicio contenedor con busqueda del pokemon -->
 	<section>
 		<div class="container-fluid pokemon-one">
@@ -24,7 +47,7 @@
 					<form action='' id="pokeform">
 						<label for="search-keyword" class="visuallyhidden">Introduce el nombre del Pokemon que quieres buscar</label>
 						<br>
-						<input type="text" id='pokeName' placeholder="Number of the pokemon" name="" required>
+						<input type="text" id='pokeName' placeholder="¿Quien es ese Pokemon!?" name="" required>
 						<!-- <input id="search-keyword" type="text" name="search-keyword" placeholder="e.g. Android" required> -->
 						<!-- <br> -->
 						<!-- <button type=submit >GO!</button> -->
@@ -43,10 +66,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<!-- aqui deberia ir la info del pokemon -->
-					<div class="contenedorPokemon">
-					<!-- <h1 id=pokename></h1> -->
-					<!-- <img id="pokeimage"/> -->
-					</div>
+					<div id="contenedorPokemon"></div>
 				</div>
 			</div>
 		</div>

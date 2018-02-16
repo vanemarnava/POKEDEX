@@ -20,7 +20,45 @@ body{
 	margin: 1em 0 2em 0;
 }
 
-.contenedorPokemon{
-	height: 10em;
-	
+#contenedorPokemon{
+	margin: 40px 0;
+}
+
+input {
+	min-width: 200px;
+	padding: 5px;
+}
+
+#submit-btn {
+	background-color: #0651DA;
+	color: white;
+}
+
+.pokemon {
+	background-color: white;	
+	text-align: center;
+}
+
+.pokemon:hover {
+	background-color: #eee;	
+}
+
+.pokemon img {
+	width: 12em;
+}
+
+.pokedex {
+	background-color: red;
+}
+
+.namePoke {
+	background-color: #646464;
+	color: white;
+	text-transform: capitalize;
+	padding: 5px;
+}
+
+.cardPoke {	
+	margin: 10px;
+	cursor: pointer;
 }
